@@ -9,6 +9,7 @@ function App() {
   const [symbols, setSymbols] = useState(false)
   const [password, setPassword] = useState('')
 
+ //Use useCallback  for optimization
   const passwordGenerator = useCallback(() => {
     let pass = ''
     let string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -25,7 +26,7 @@ function App() {
 
 
 
-
+//Use useRef to select the input
   const passRef = useRef(passwordGenerator)
 
   const copyToClipboard = () => {
@@ -33,7 +34,7 @@ function App() {
     window.navigator.clipboard.writeText(password)
   }
 
-
+//Use useEffect to call the function 
   useEffect(() => {
     passwordGenerator()
   }, [length, numbers, symbols])
